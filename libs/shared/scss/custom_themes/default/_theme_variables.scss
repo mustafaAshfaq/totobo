@@ -1,0 +1,56 @@
+// Used to import variables in components
+//@import '../../../../../node_modules/bootstrap/scss/mixins';
+@import '../../../../../node_modules/bootstrap/scss/mixins/breakpoints';
+@import '../../../../../node_modules/bootstrap/scss/mixins/hover';
+@import '../../../../../node_modules/bootstrap/scss/mixins/image';
+@import '../../../../../node_modules/bootstrap/scss/mixins/badge';
+@import '../../../../../node_modules/bootstrap/scss/mixins/resize';
+@import '../../../../../node_modules/bootstrap/scss/mixins/screen-reader';
+@import '../../../../../node_modules/bootstrap/scss/mixins/size';
+@import '../../../../../node_modules/bootstrap/scss/mixins/reset-text';
+@import '../../../../../node_modules/bootstrap/scss/mixins/text-emphasis';
+@import '../../../../../node_modules/bootstrap/scss/mixins/text-hide';
+@import '../../../../../node_modules/bootstrap/scss/mixins/text-truncate';
+@import '../../../../../node_modules/bootstrap/scss/mixins/visibility';
+
+// // Components
+@import "../../../../../node_modules/bootstrap/scss/mixins/alert";
+@import "../../../../../node_modules/bootstrap/scss/mixins/buttons";
+@import "../../../../../node_modules/bootstrap/scss/mixins/caret";
+@import "../../../../../node_modules/bootstrap/scss/mixins/pagination";
+@import "../../../../../node_modules/bootstrap/scss/mixins/lists";
+@import "../../../../../node_modules/bootstrap/scss/mixins/list-group";
+@import "../../../../../node_modules/bootstrap/scss/mixins/nav-divider";
+@import "../../../../../node_modules/bootstrap/scss/mixins/forms";
+@import "../../../../../node_modules/bootstrap/scss/mixins/table-row";
+
+// // Skins
+@import "../../../../../node_modules/bootstrap/scss/mixins/background-variant";
+@import "../../../../../node_modules/bootstrap/scss/mixins/border-radius";
+@import "../../../../../node_modules/bootstrap/scss/mixins/box-shadow";
+@import "../../../../../node_modules/bootstrap/scss/mixins/gradients";
+@import "../../../../../node_modules/bootstrap/scss/mixins/transition";
+
+// // Layout
+@import "../../../../../node_modules/bootstrap/scss/mixins/clearfix";
+@import "../../../../../node_modules/bootstrap/scss/mixins/grid-framework";
+@import "../../../../../node_modules/bootstrap/scss/mixins/grid";
+@import "../../../../../node_modules/bootstrap/scss/mixins/float";
+
+@import 'custom_bootstrap_variables';
+// -- Theme Colors here --
+// Custom theme colors
+// Refer _default_variables to generate colors
+$theme-main-color: #212e40;
+$theme-action-color: #f2903d;
+$primary-font: 'Catamaran', 'Lato', sans-serif;
+$header-font-color: $gray-200;
+$theme-action-sub-color1: darken($theme-action-color, 25);
+$theme-action-sub-color2: darken($theme-action-sub-color1, 30);
+$theme-action-sub-color3: darken($theme-action-sub-color2, 25);
+$theme-action-sub-color4: darken($theme-action-sub-color3, 25);
+$theme-main-sub-color1: #46566b;
+$theme-main-sub-color2: #212e40;
+$theme-main-sub-color3: #121a23;
+$theme-main-sub-color4: #121a23;
+$footer-font-color: $gray-500;

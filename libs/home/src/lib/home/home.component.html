@@ -1,0 +1,52 @@
+<main class="home-middle" style="max-width: none;">
+    <div class="home-container" style="max-width: 600px;">
+        <!-- <div class="home-container-inner content-block"> -->
+            <div class="content-block" data-test-id="live_container" data-mode="live">
+                <div class="contentBlockHeading borderMain style_header2">
+                    <h1><span>Sports Betting</span></h1>
+                    <span class="style_seperator2">-</span>
+                    <span>Live</span>
+                </div>
+                <div class="tabs">
+                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=1"
+                    [attr.data-sport-id]="1" [attr.data-selected]="sportIdSelected===1"
+                        [routerLink]="[{outlets:{sport:[1]}}]" routerLinkActive="router-link-active" >
+                        <span class="style_tabContent1">
+                            <i class="icon-soccer" style="margin-right: 5px;"></i>
+                            <span class="style_tabLabel">Football</span>
+                        </span>
+                    </button>
+                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=5"
+                    [attr.data-sport-id]="5" [attr.data-selected]="sportIdSelected===5"
+                    [routerLink]="[{outlets:{sport:[5]}}]" routerLinkActive="router-link-active">
+                        <span class="style_tabContent1">
+                            <i class="icon-tennis" style="margin-right: 5px;"></i>
+                            <span class="style_tabLabel">Tennis</span>
+                        </span>
+                    </button>
+                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=2"
+                    [attr.data-sport-id]="2" [attr.data-selected]="sportIdSelected===2"
+                    [routerLink]="[{outlets:{sport:[2]}}]" routerLinkActive="router-link-active">
+                        <span class="style_tabContent1">
+                            <i class="icon-basketball" style="margin-right: 5px;"></i>
+                            <span class="style_tabLabel">Basketball</span>
+                        </span>
+                    </button>
+                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=23"
+                    [attr.data-sport-id]="23" [attr.data-selected]="sportIdSelected===23"
+                    [routerLink]="[{outlets:{sport:[23]}}]" routerLinkActive="router-link-active">
+                        <span class="style_tabContent1">
+                            <i class="icon-esports" style="margin-right: 5px;"></i>
+                            <span class="style_tabLabel">Volleyball</span>
+                        </span>
+                    </button>
+                </div>
+                <div>
+                    <router-outlet name="sport"></router-outlet>
+                </div>
+            </div> 
+        <!-- </div> -->
+    </div>
+</main>
+
+<router-outlet></router-outlet>

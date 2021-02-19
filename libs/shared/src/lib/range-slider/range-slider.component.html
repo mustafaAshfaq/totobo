@@ -1,0 +1,13 @@
+<div class="range">
+    <input id="rg1" type="range" #rng
+     min="1" max="5" steps="1" value="5"  
+    (input)="onSlide($event.target)">
+  </div>
+  
+  <ul class="range-labels">
+    <li *ngFor="let item of durations" (click)="rangeChange(item)"
+      [ngClass]="labelClass(item.range)">
+      {{item.text}}
+    </li>
+    
+  </ul>

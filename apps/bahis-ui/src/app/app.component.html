@@ -1,0 +1,88 @@
+<ngx-json-ld [json]="schema"></ngx-json-ld>
+<div class="selected-theme">
+  <section>
+    <ng-progress [color]="'red'" [spinner]="false"></ng-progress>
+        <!-- <app-header
+      *ngIf="currentUrl"
+      [layoutState]="layoutState$ | async"
+    ></app-header> -->
+
+    <!-- header 2 -->
+    <header class="the-header" *ngIf="loggedIn$ | async">
+      <div class="navbar container">
+        <a class="navbar-brand"  [routerLink]="[ '/']">
+          <img src="../assets/default/logo.png" alt="logoText" height="40px" width="110px" class="d-inline-block align-top"/>
+      </a>
+        <!-- Trigger -->
+        <a class="btn-navbar btn-navbar-navtoggle btn-flyout-trigger" href="#">
+          <span class="icon-bar btn-flyout-trigger"></span>
+          <span class="icon-bar btn-flyout-trigger"></span>
+          <span class="icon-bar btn-flyout-trigger"></span>
+        </a>
+        
+        <!-- Structure -->
+        <nav class="the-nav nav-collapse clearfix">
+          <ul class="nav nav-pill pull-left">
+            <li>
+              <totobo-searchbar></totobo-searchbar>
+            </li>
+            <li>
+              <a href="#">Sports</a>
+            </li>
+            <li>
+              <a href="#">Live Betting</a>
+            </li>
+            <li>
+              <a href="#">Casino</a>
+            </li>
+            <li>
+              <a href="#">Live Casino</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">Virtual Sports <b class="caret"></b></a>
+              <ul class="subnav">
+                <li><a href="#">Euro Cup</a></li>
+                <li><a href="#">Football 1.1</a></li>
+                <li><a href="#">Football 1.2</a></li>
+                <li><a href="#">Tennis 1.1</a></li>
+                <li><a href="#">Basketball</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav nav-pill pull-right">
+            <li><a href="#">Amount </a></li>
+            <li><a href="#">My bets </a></li>
+            <li><a href="#">Deposits</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- header 2 end -->
+    <main class="main-body">
+       <!-- Sub nav -->
+       <div *ngIf="loggedIn$ | async">
+        <div class="nav_box dark">
+          <h1>Top Sports</h1>
+          <totobo-range-slider></totobo-range-slider>
+        </div>
+        <ul id="side-nav">
+          <li *ngFor="let sport of sports">
+            <div class="link">
+              <i [ngClass]="getIcon(sport)"></i>
+              <a href="#">{{sport.Sport}}</a>
+              <span class="badge badge-secondary">{{sport.MatchCountPre}}</span>
+            </div>
+          </li>
+         
+        </ul>
+      </div>
+      <!-- End Sub nav -->
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+      
+       
+    </main>
+    <!-- <app-footer *ngIf="currentUrl"></app-footer> -->
+  </section>
+</div>
