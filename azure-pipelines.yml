@@ -18,5 +18,5 @@ jobs:
       vmImage: 'ubuntu-latest'
     steps:
       - template: .azure-pipelines/steps/install-node-modules.yml
-      - script:   npx nx run-many --target=build --all --prod
+      - script:   yarn nx run-many --target=build --all --prod
 
