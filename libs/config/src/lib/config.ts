@@ -2,7 +2,7 @@ import * as default_config from './default/default-config';
   export const Config={
   DEFAULT_CONFIG:{
     apiEndpoint:'/api', //'https://m.showbahis103.com/apiv3',
-    // prodApiEndpoint: 'http://localhost:3000/',
+    prodApiEndpoint: '/api',
     frontEndUrl: 'https://totobo1.com/',
     appName: 'Totobo Online Shop',
     fevicon: '/assets/default/favicon.ico',
