@@ -4,19 +4,19 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- prototype
+  - prototype
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
+  - job: initial_setup
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+        - template: .azure-pipelines/steps/install-node-modules.yml
+        - script: echo 'installing dependencies'
+  - job: builds
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - template: .azure-pipelines/steps/install-node-modules.yml
+      - script:   npx nx run-many --target=build --all --prod
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
