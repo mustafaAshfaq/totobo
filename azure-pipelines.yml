@@ -5,18 +5,75 @@
 
 trigger:
   - prototype
+variables:
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: '14ce8513-c5c5-4ba7-8b57-5c58765322c8'
 
-jobs:
+  # Web app name
+  webAppName: 'totobo'
+
+  # Environment name
+  environmentName: 'totobo'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+stages:
+- stage: Build
+  displayName: 'Build'
+  jobs:
   - job: initial_setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-        - template: .azure-pipelines/steps/install-node-modules.yml
-        - script: echo 'installing dependencies'
+    - template: .azure-pipelines/steps/install-node-modules.yml
+    - script: echo 'installing dependencies'
   - job: builds
     pool:
       vmImage: 'ubuntu-latest'
     steps:
       - template: .azure-pipelines/steps/install-node-modules.yml
       - script:   yarn nx run-many --target=build --all --prod
-
+      - task: ArchiveFiles@2
+        displayName: 'archive ui'
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/ui'
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+      - upload: $(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip
+        artifact: ui
+      - task: ArchiveFiles@2
+        displayName: 'archive api'
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/api'
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+      - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        artifact: api
+      - script: echo '$(System.DefaultWorkingDirectory)'
+- stage: Deploy
+  displayName: 'deploy'
+  dependsOn: Build
+  condition: Succeeded()
+  jobs:
+    - deployment: Deploy
+      displayName: deploying apps
+      environment: $(environmentName)
+      pool:
+        vmImage: $(vmImageName)
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: AzureWebApp@1
+              displayName: 'app-api'
+              inputs:
+                azureSubscription: $(azureSubscription)
+                appType: webAppLinux
+                appName: $(webAppName)
+                runtimeStack: 'NODE|10.10'
+                package: $(Pipeline.Workspace)/api/$(Build.BuildId).zip
+                startUpCommand: 'npm run start'
