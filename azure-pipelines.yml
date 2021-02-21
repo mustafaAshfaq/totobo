@@ -36,7 +36,7 @@ stages:
       - task: ArchiveFiles@2
         displayName: 'archive ui'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/ui'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/apps/bahis-ui'
           includeRootFolder: false
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
@@ -46,7 +46,7 @@ stages:
       - task: ArchiveFiles@2
         displayName: 'archive api'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/api'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/totobo-api'
           includeRootFolder: false
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
