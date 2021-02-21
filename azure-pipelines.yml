@@ -36,12 +36,12 @@ stages:
       - task: ArchiveFiles@2
         displayName: 'archive ui'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/apps/bahis-ui'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/bahis-ui'
           includeRootFolder: false
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
           replaceExistingArchive: true
-      - upload: $(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip
+      - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         artifact: ui
       - task: ArchiveFiles@2
         displayName: 'archive api'
