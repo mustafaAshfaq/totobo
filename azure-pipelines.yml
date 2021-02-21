@@ -7,7 +7,7 @@ trigger:
   - prototype
 variables:
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '28aab027-59d8-4e05-ba20-1bf4c5f5cf41'
+  azureSubscription: 'Pay-As-You-Go'
 
   # Web app name
   webAppName: 'totobo'
