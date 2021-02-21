@@ -41,8 +41,7 @@ stages:
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip'
           replaceExistingArchive: true
-      - upload: $(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip
-        artifact: ui
+        enabled: true
       - task: ArchiveFiles@2
         displayName: 'archive api'
         inputs:
@@ -51,6 +50,9 @@ stages:
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
           replaceExistingArchive: true
-      - upload: $(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip
-        artifact: api
-      - script: echo '$(System.DefaultWorkingDirectory)'
+        enabled: true
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
+          ArtifactName: 'build'
+      
