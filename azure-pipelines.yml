@@ -55,4 +55,5 @@ stages:
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
           ArtifactName: 'build'
+          publishLocation: FilePath
       
