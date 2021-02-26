@@ -53,12 +53,12 @@ stages:
         enabled: true
       - task: PublishPipelineArtifact@1
         inputs:
-          TargetPath: '$(Pipeline.Workspace)/ui/$(Build.BuildId).zip'
+          TargetPath: '$(Pipeline.Workspace)/a/ui/$(Build.BuildId).zip'
           ArtifactName: 'ui'
           publishLocation: 'pipeline'
       - task: PublishPipelineArtifact@1
         inputs:
-          TargetPath: '$(Pipeline.Workspace)/api/$(Build.BuildId).zip'
+          TargetPath: '$(Pipeline.Workspace)/a/api/$(Build.BuildId).zip'
           ArtifactName: 'api'
           publishLocation: 'pipeline'
       
