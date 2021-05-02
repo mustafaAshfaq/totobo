@@ -51,14 +51,14 @@ stages:
           archiveFile: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
           replaceExistingArchive: true
         enabled: true
-      - task: PublishPipelineArtifact@1
+      - task: PublishBuildArtifacts@1
         inputs:
           TargetPath: '$(Pipeline.Workspace)/a/ui/$(Build.BuildId).zip'
           ArtifactName: 'ui'
-          publishLocation: 'pipeline'
-      - task: PublishPipelineArtifact@1
+          publishLocation: 'container'
+      - task: PublishBuildArtifacts@1
         inputs:
           TargetPath: '$(Pipeline.Workspace)/a/api/$(Build.BuildId).zip'
           ArtifactName: 'api'
-          publishLocation: 'pipeline'
+          publishLocation: 'container'
       
