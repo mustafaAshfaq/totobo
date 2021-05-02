@@ -42,6 +42,8 @@ stages:
           archiveFile: '$(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip'
           replaceExistingArchive: true
         enabled: true
+      - upload: '$(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip'
+        artifact: ui
       - task: ArchiveFiles@2
         displayName: 'archive api'
         inputs:
@@ -51,11 +53,7 @@ stages:
           archiveFile: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
           replaceExistingArchive: true
         enabled: true
+      - script: echo '$(Build.ArtifactStagingDirectory)-artifact$(System.DefaultWorkingDirectory)-working $(Pipeline.Workspace)-pipeline'
       - upload: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
         artifact: api
-      - task: PublishBuildArtifacts@1
-        inputs:
-          TargetPath: '$(Pipeline.Workspace)/a/ui/$(Build.BuildId).zip'
-          ArtifactName: 'ui'
-          publishLocation: 'container'
       
