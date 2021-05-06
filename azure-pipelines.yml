@@ -32,11 +32,11 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
       - template: .azure-pipelines/steps/install-node-modules.yml
-      - script:   yarn nx run-many --target=build --all --prod --generatePackageJson
+      - script:   yarn nx run-many --target=build --all --prod
       - task: ArchiveFiles@2
         displayName: 'archive ui'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/bahis-ui'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/web'
           includeRootFolder: false
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip'
@@ -47,7 +47,7 @@ stages:
       - task: ArchiveFiles@2
         displayName: 'archive api'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/totobo-api'
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/api'
           includeRootFolder: false
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
