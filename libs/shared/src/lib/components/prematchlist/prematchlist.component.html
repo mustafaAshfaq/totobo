@@ -1,0 +1,93 @@
+<!-- <div class="">
+  <div class="style_row__3dZ0G row-header">
+      <div class="style_metadata__3g6gc">
+          <span class="style_rowLink__32VgY">Match Detail
+              <i class="fi fi-rr-angle-right style_icon__2RbfO"></i>
+          </span>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <div class="style_buttons__1xk8h style_moneyline__1ptj- style_threeButtons__2t1WL">
+          <div class="style_label__1O_we">1</div>
+          <div class="style_label__1O_we">X</div>
+          <div class="style_label__1O_we">2</div>
+      </div>
+      <div class="style_buttons__1xk8h">
+          <span></span>
+          <div style="width: 13px"></div>
+      </div>
+      <div class="style_rowEnd__2h_xB"><span></span></div>
+  </div>
+  <div *ngFor="let match of (preMatchList$ | async); let i=index;" class="flex-column">
+    <totobo-pre-match-details [sportEvent]="match"></totobo-pre-match-details>
+  </div>
+</div> -->
+<div class="table-responsive">
+  <table class="table table-striped text-center mb-0">
+      <thead>
+          <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th class="text-center" colspan="3">&nbsp;</th>
+              <th class="text-center">1</th>
+              <th class="text-center">X</th>
+              <th class="text-center">2</th>
+              <th colspan="3">&nbsp;</th>
+              <th>&nbsp;</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let match of preMatchList$|async; let i=index;">
+              <td class="short" scope="row">
+                {{
+                  (this.localMatchDate(match.time) | date:'E')
+                }}
+              </td>
+              <td class="short" scope="row">
+                {{timeDetails(match.time)}}</td>
+              <td triggers="mouseenter mouseleave" placement="bottom" [tooltipHtml]="match.league?.name" class="text-right short">{{match.home?.name}}</td>
+              <td class="short"><b>-</b></td>
+              <td triggers="mouseenter mouseleave" placement="bottom" [tooltipHtml]="match.league?.name" class="text-left short">{{match.away?.name}}</td>
+
+                <td class="pl-0 pr-0 w-40"><a *ngIf="match.odds && match.odds[sportId+'_1']" class="label label-default">{{roundValue(match.odds[sportId+'_1'][0]?.home_od)}}</a></td>
+                <td class="pl-0 pr-0 w-40"><a *ngIf="match.odds && match.odds[sportId+'_1']" class="label label-default">{{roundValue(match.odds[sportId+'_1'][0]?.draw_od)}}</a></td>
+                <td class="pl-0 pr-0 w-40"><a *ngIf="match.odds && match.odds[sportId+'_1']" class="label label-default">{{roundValue(match.odds[sportId+'_1'][0]?.away_od)}}</a></td>
+
+              <td class="pl-0 pr-0 w-30">
+                  <button type="button" class="btn btn-dark btn-xs" [tooltip]="tooltipCont" triggers="mouseenter mouseleave" tooltipAppendToBody=true placement="bottom" >
+                      <i class="fas fa-user"></i>
+                  </button>
+
+              </td>
+              <td class="pl-0 pr-0 w-30">
+                  <button type="button" class="btn btn-dark btn-xs">
+                      <i class="fas fa-chart-pie"></i>
+                  </button>
+              </td>
+              <td class="pl-0 pr-0 w-30">
+                  <button type="button" class="btn btn-dark btn-xs">
+                      <i class="fas fa-globe"></i>
+                  </button>
+              </td>
+              <td class="pl-0 pr-0 w-40 border-left-1">+43</td>
+          </tr>
+      </tbody>
+  </table>
+  <ng-template #tooltipCont id="tooltip">
+    <div class="row mt-5 w-200"><div class="col col-xs-12">Müşterilerimiz bu şekilde oynadı.</div></div>
+    <div class="row mt-5 w-200"><div class="col col-xs-4">1</div><div class="col col-xs-4">X</div>
+    <div class="col col-xs-4">2</div></div>
+    <div class="row w-200 mt-5 mb-5">
+      <div class="col col-xs-4 text-left"><div class="progress">
+        <div class="progress-bar progress-bar-success wd-20" role="progressbar" aria-valuenow="20"
+        aria-valuemin="0" aria-valuemax="100"><span class="sr-only">20% Complete (success)</span></div>
+      </div></div>
+      <div class="col col-xs-4"><div class="progress">
+        <div class="progress-bar progress-bar-success wd-40" role="progressbar" aria-valuenow="40"
+        aria-valuemin="0" aria-valuemax="100"><span class="sr-only">40% Complete (success)</span></div>
+      </div></div>
+      <div class="col col-xs-4"><div class="progress">
+        <div class="progress-bar progress-bar-success wd-60" role="progressbar" aria-valuenow="60"
+        aria-valuemin="0" aria-valuemax="100"><span class="sr-only">60 Complete (success)</span></div>
+      </div></div></div>
+  </ng-template>
+</div>

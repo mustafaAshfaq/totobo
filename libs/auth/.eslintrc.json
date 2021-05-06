@@ -12,11 +12,19 @@
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "totobo", "style": "camelCase" }
+          {
+            "type": "attribute",
+            "prefix": "totobosports-new",
+            "style": "camelCase"
+          }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "totobo", "style": "kebab-case" }
+          {
+            "type": "element",
+            "prefix": "totobosports-new",
+            "style": "kebab-case"
+          }
         ]
       }
     },

@@ -1,0 +1,141 @@
+.navbar-default {
+  font-size: 14px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  background-color: #f64835;
+  padding: 13px 30px;
+}
+
+  .navbar-brand:hover {
+      background-color: #f64835 !important;
+  }
+
+  .navbar-brand > img {
+      height: 24px;
+  }
+
+.navbar-right > li > a {
+  padding: 4.5px 10px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #555;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.list-group .list-group-item {
+  background-color: #7c7c7c;
+  border: 1px solid #555;
+  color: #fff;
+}
+.list-group .label-default {
+  background-color: #7c7c7c;
+  border: 1px solid #555555;
+  color: #fff;
+  font-weight: normal;
+}
+
+.list-group .label-default:hover {
+      border: 1px solid #7c7c7c;
+  }
+
+.list-group .label-default {
+  float: right;
+}
+
+  .list-group .list-group-item input[type=checkbox] {
+      margin-top: 0px;
+  }
+
+.list-group .list-group-item label {
+      display: block;
+      margin-bottom: 0px;
+  }
+
+ .list-group .list-group-item:hover {
+      background-color: #555;
+      color: #fff;
+  }
+
+ .list-group .list-group-item.active, .list-group .list-group-item.active:focus, .list-group .list-group-item.active:hover {
+      z-index: 2;
+      color: #fff;
+      background-color: #555;
+      border-color: #555;
+  }
+
+  .select {
+    background-color: #f64835 !important;
+    color: #fff !important;
+  }
+
+    .select a {
+        color: #fff !important;
+    }
+
+  a.label:focus, a.label:hover {
+    color: #333;
+  }
+
+  .list-group a.label-default:hover {
+    border-color: #666;
+  }
+  @media only screen and (max-width: 992px) {
+    .navbar-default{
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .navbar{
+      border: 1px solid transparent;
+    }
+
+    .list-group .list-group-item {
+        font-size: 18px;
+        float: left;
+        display: table-cell;
+        border: none;
+        border-radius: 0px;
+    }
+
+    .list-group {
+        display: flex;
+        flex-direction: row;
+        background-color: #fff;
+        overflow-x: auto;
+        overflow-y: hidden;
+        border-bottom-style: ridge;
+    }
+
+       .list-group .list-group-item {
+            background-color: #fff;
+            color: #555;
+            padding: 1px 8px;
+        }
+
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    .navbar-header button {
+        display: none;
+    }
+
+    .navbar-default .navbar-brand {
+        float: none;
+        display: block;
+    }
+
+    .navbar-brand > img {
+        margin: 0 auto;
+    }
+
+    .navbar {
+        margin-bottom: 0px;
+    }
+}
+

@@ -1,9 +1,14 @@
 {
-  "npmScope": "totobo",
-  "affected": { "defaultBase": "master" },
+  "npmScope": "totobosports-new",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
-    "workspace.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -12,21 +17,39 @@
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
   },
   "projects": {
-    "bahis-ui": { "tags": [] },
-    "bahis-ui-e2e": { "tags": [], "implicitDependencies": ["bahis-ui"] },
-    "shared": { "tags": [] },
-    "config": { "tags": [] },
-    "test": { "tags": [] },
-    "layout": { "tags": [] },
-    "totobo-api": { "tags": [] },
-    "core": { "tags": [] },
-    "auth": { "tags": [] },
-    "home": { "tags": [] },
-    "product": { "tags": [] },
-    "bets": { "tags": [] }
+    "web": {
+      "tags": []
+    },
+    "web-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web"]
+    },
+    "api": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
+    },
+    "home": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    },
+    "layout": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "totobo-ui-totobo-ui": {
+      "tags": []
+    }
   }
 }

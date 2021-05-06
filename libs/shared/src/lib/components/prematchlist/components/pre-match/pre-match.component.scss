@@ -1,0 +1,303 @@
+@import '../../../../../../scss/selected_theme_variables';
+.style_loading__37dcs {
+    position: relative;
+    min-height: 120px;
+    text-align: center;
+    padding-top: 40px;
+}
+.style_ball__1molL {
+    font-size: 30px;
+    color: #caced2;
+    animation: style_rotate__178YB 1.5s linear infinite;
+    display: inline-block;
+}
+.style_rotate__178YB{
+animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: style_rotate__178YB;
+}
+.row-header , .row-header-link{
+    color:$theme-main-sub-color3;
+}
+.row-header-link{
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 700;
+    position: relative;
+}
+.row-header{
+
+    height: auto;
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: #f1f3f7;
+    padding: 2px 10px;
+    border-top: 1px solid #dadbdc;
+}
+
+.style_row__3dZ0G {
+    padding: 6px 10px;
+}
+.style_row__3dZ0G, .style_row__3Ic8Z {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.row-content {
+    height: 56px;
+    border-top: 1px solid $theme-main-sub-color2;
+}
+
+.style_metadata__3g6gc {
+    width: 200px;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.style_icon__2RbfO {
+    font-size: 8px;
+    margin-left: 5px;
+}
+
+.style_threeButtons__2t1WL {
+    width: 190px;
+}
+.style_moneyline__1ptj- {
+    width: 130px;
+    margin-right: 20px;
+}
+.style_buttons__1xk8h {
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    position: relative;
+    width: 140px;
+    display: flex;
+    margin-right: 15px;
+}
+.style_label__1O_we {
+    -ms-flex: 1 1;
+    flex: 1 1;
+    text-align: center;
+    font-weight: 500;
+}
+
+.style_gameInfo__2B3Dp {
+    position: relative;
+}
+.style_matchupMetadata__pDqW6 {
+    font-size: 10px;
+    line-height: 1.3;
+}
+.style_gameInfoLabel__22bJY {
+    padding: 0 0 2px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.ellipsis, .nowrap {
+    white-space: nowrap;
+}
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    //display: inline-block;
+}
+
+.style_participant__3D7nB {
+    white-space: no-wrap;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    font-weight: 500;
+    ::after{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 20px;
+        right: 0;
+        top: 0;
+        background: linear-gradient(270deg,#fff,hsla(0,0%,100%,0));
+
+    }
+
+}
+.style_live__CAScc, .style_score__58p_z {
+    color: $theme-action-sub-color1;
+}
+.style_score__58p_z {
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+.style_staticScore__1wWcf {
+    transition: all .25s;
+}
+.style_matchupDate__pcXyq {
+    margin-top: 2px;
+    font-size: 9px;
+    font-weight: 600;
+    color: $theme-action-sub-color1;
+}
+
+.style_disabled__2qKqM {
+    cursor: not-allowed;
+}
+.style_price__1WvlZ {
+    font-weight: 700;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+    :host ::ng-deep .style_default__3m1iy {
+    cursor: pointer;
+    color: #0a74ef;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 62px;
+    transition: transform .1s ease-in-out;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    direction: ltr;
+    background:  linear-gradient(180deg, #FFFFFF 0%, #FFF 70%, #F8F8F8 80%, #E6E6E6 100%);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0 2px;
+    overflow: hidden;
+}
+[tooltip] {
+    position: relative;
+    display: inline-block;
+}
+button {
+    font-weight: 700;
+}
+button {
+    overflow: visible;
+    border: 0;
+    font: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    -webkit-font-smoothing: inherit;
+    letter-spacing: inherit;
+    background: none;
+    cursor: pointer;
+}
+a, button {
+    color: inherit;
+}
+[tooltip]::before {
+
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-color: #072443 transparent transparent;
+    border-left: 6px solid transparent;
+    border-bottom: 0 solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 4px solid #072443;
+    z-index: 2;
+    opacity: 0;
+
+}
+[tooltip]::after {
+    content: attr(tooltip);
+    position: absolute;
+    left: 50%;
+    top: -6px;
+    transform: translateX(-50%) translateY(-100%);
+    background: #072443;
+    background: #072443;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 80px;
+    border-radius: 3px;
+    pointer-events: none;
+    padding: 4px;
+    z-index: 1;
+    opacity: 0;
+    filter: drop-shadow(rgba(0,0,0,.4) 0 1px 6px);
+}
+.style_rowEnd__2h_xB {
+    width: 25px;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    left-margin: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+.style_points__2bP5X {
+    font-weight: 500;
+    font-size: 10px;
+    color: #0b1422;
+}
+
+.style_alternates__1-raF {
+    width: 13px;
+    display: -ms-flexbox;
+    display: flex;
+}
+.style_expandBtn__3TBhA {
+    width: 13px;
+    border-radius: 3px;
+    color: #72777f;
+    text-align: center;
+    cursor: pointer;
+    opacity: .75;
+    vertical-align: middle;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.style_expandBtnIcon__3H5BT {
+    font-size: 13px;
+}
+
+.style_offline__34O4F, .style_unavailable__3GxH- {
+    opacity: 1;
+}

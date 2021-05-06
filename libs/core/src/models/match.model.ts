@@ -29,4 +29,9 @@ export class Match{
     TournamentOrder: number;
     PeriodLength:number;
     Status:string;
+    NoOdd0:string;
+    NoOdd1:string;
+    NoOdd2:string;
+    OddsType:string;
+    FullMatchDate:string
 }

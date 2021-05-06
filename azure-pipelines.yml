@@ -32,7 +32,7 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
       - template: .azure-pipelines/steps/install-node-modules.yml
-      - script:   yarn nx run-many --target=build --all --prod
+      - script:   yarn nx run-many --target=build --all --prod --generatePackageJson
       - task: ArchiveFiles@2
         displayName: 'archive ui'
         inputs:
@@ -53,7 +53,7 @@ stages:
           archiveFile: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
           replaceExistingArchive: true
         enabled: true
-      - script: echo '$(Build.ArtifactStagingDirectory)-artifact$(System.DefaultWorkingDirectory)-working $(Pipeline.Workspace)-pipeline'
+      - script: yarn install
       - upload: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
         artifact: api
       

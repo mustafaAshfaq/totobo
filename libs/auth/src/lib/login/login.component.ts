@@ -23,10 +23,14 @@ export class LoginComponent implements OnInit {
       
     });
     this.returnUrl=this.route.snapshot.queryParamMap.get('returnUrl');
+    if(!this.returnUrl || this.returnUrl==='')
+      this.returnUrl="/";
     this.loginError$=this.authHelper.errors$;
     this.authHelper.authenticated$.subscribe(a=>{
-      if(a)
-      this.router.navigate([this.returnUrl]);
+      if(a){
+        this.router.navigate([this.returnUrl]);
+      }
+      
     })
   }
   onSubmit(){

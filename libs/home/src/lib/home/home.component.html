@@ -1,52 +1,476 @@
-<main class="home-middle" style="max-width: none;">
-    <div class="home-container" style="max-width: 600px;">
-        <!-- <div class="home-container-inner content-block"> -->
-            <div class="content-block" data-test-id="live_container" data-mode="live">
-                <div class="contentBlockHeading borderMain style_header2">
-                    <h1><span>Sports Betting</span></h1>
-                    <span class="style_seperator2">-</span>
-                    <span>Live</span>
-                </div>
-                <div class="tabs">
-                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=1"
-                    [attr.data-sport-id]="1" [attr.data-selected]="sportIdSelected===1"
-                        [routerLink]="[{outlets:{sport:[1]}}]" routerLinkActive="router-link-active" >
-                        <span class="style_tabContent1">
-                            <i class="icon-soccer" style="margin-right: 5px;"></i>
-                            <span class="style_tabLabel">Football</span>
-                        </span>
-                    </button>
-                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=5"
-                    [attr.data-sport-id]="5" [attr.data-selected]="sportIdSelected===5"
-                    [routerLink]="[{outlets:{sport:[5]}}]" routerLinkActive="router-link-active">
-                        <span class="style_tabContent1">
-                            <i class="icon-tennis" style="margin-right: 5px;"></i>
-                            <span class="style_tabLabel">Tennis</span>
-                        </span>
-                    </button>
-                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=2"
-                    [attr.data-sport-id]="2" [attr.data-selected]="sportIdSelected===2"
-                    [routerLink]="[{outlets:{sport:[2]}}]" routerLinkActive="router-link-active">
-                        <span class="style_tabContent1">
-                            <i class="icon-basketball" style="margin-right: 5px;"></i>
-                            <span class="style_tabLabel">Basketball</span>
-                        </span>
-                    </button>
-                    <button data-theme="light" class="tabItem style_tabItem__3OnrA" (click)="sportIdSelected=23"
-                    [attr.data-sport-id]="23" [attr.data-selected]="sportIdSelected===23"
-                    [routerLink]="[{outlets:{sport:[23]}}]" routerLinkActive="router-link-active">
-                        <span class="style_tabContent1">
-                            <i class="icon-esports" style="margin-right: 5px;"></i>
-                            <span class="style_tabLabel">Volleyball</span>
-                        </span>
-                    </button>
-                </div>
-                <div>
-                    <router-outlet name="sport"></router-outlet>
-                </div>
-            </div> 
-        <!-- </div> -->
-    </div>
-</main>
+<div class="container d-flex p-2 flex-column">
+  <totobosports-new-header></totobosports-new-header>
 
-<router-outlet></router-outlet>
+  <div class="row">
+    <div class="col-lg-2 col-md-3 solpanel">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center mb-5 hidden-sm hidden-xs">
+              <totobo-range-slider></totobo-range-slider>
+            </div>
+            <div class="solmenu">
+                <div class="list-group mb-0">
+                  <ng-template ngFor let-sport [ngForOf]="sports$ | async" let-i="index">
+                    <a data-href="#menu1" class="list-group-item" (click)="sportIdSelected=sport[0]?.sport_id">
+                        <i [ngClass]="getIcon(sport)" class="hidden-md hidden-lg"></i>
+                        <span class="hidden-xs hidden-sm">
+                            {{getName(sport[0]?.sport_id)}}
+                            <span [attr.sport-selected]="sportIdSelected==sport[0]?.sport_id" class="label label-default">{{sport?.length}}</span>
+                            <span [attr.sport-selected]="sportIdSelected==sport[0]?.sport_id" class="icons pull-right">
+                                <i class="fas fa-check tumunuSec"></i>
+                                <i class="fas fa-times tumunuKaldir"></i>
+                            </span>
+                        </span>
+                    </a>
+                    <div id="menu1" *ngIf="sportIdSelected==sport[0]?.sport_id">
+                        <ul class="list-group mb-0">
+                            <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                            <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                            <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                            <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                            <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                        </ul>
+                    </div>
+                  </ng-template>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default hidden-sm hidden-xs">
+            <div class="panel-heading text-center">İstatistikler</div>
+            <div class="list-group">
+                <a href="#" class="list-group-item font-12"><i class="fas fa-angle-right"></i> Bir bakışta istatistikler</a>
+                <a href="#" class="list-group-item font-12"><i class="fas fa-angle-right"></i> Sonuçlar ve Canlı Skorlar</a>
+                <a href="#" class="list-group-item font-12"><i class="fas fa-angle-right"></i> Arşivden Sonuçlar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-15 ortaalan">
+
+        <div class="mobildesign hidden-lg hidden-md">
+
+            <div id="slider" class="carousel slide bg-white" data-interval="3000" data-ride="carousel">
+
+                <ol class="carousel-indicators pt-3 mb-0">
+                    <li data-target="#slider" data-slide-to="0" class="active"></li>
+                    <li data-target="#slider" data-slide-to="1" class=""></li>
+                    <li data-target="#slider" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="carousel-caption pb-10">
+                            <div class="row pb-10">
+                                <div class="col-xs-1 col-xs-offset-1"><i class="fas fa-futbol font-32 pt-10"></i></div>
+                                <div class="col-xs-2">
+                                    <div class="font-22">52'</div>
+                                    <div><span class="label label-danger">LIVE</span></div>
+                                </div>
+                                <div class="col-xs-6 text-left pt-5 font-16">
+                                    <div><b>Alverca</b></div>
+                                    <div><b>Dezembro</b></div>
+                                </div>
+                            </div>
+                            <div class="row pl-10 pr-10">
+                                <div class="col-xs-3 text-left border noborder">
+                                    <div class="pl-10"><b>Maç<br />Sonucu</b></div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>1</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>X</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>2</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-caption pb-10">
+                            <div class="row pb-10">
+                                <div class="col-xs-1 col-xs-offset-1"><i class="fas fa-futbol font-32 pt-10"></i></div>
+                                <div class="col-xs-2">
+                                    <div class="font-22">52'</div>
+                                    <div><span class="label label-danger">LIVE</span></div>
+                                </div>
+                                <div class="col-xs-6 text-left pt-5 font-16">
+                                    <div><b>Alverca</b></div>
+                                    <div><b>Dezembro</b></div>
+                                </div>
+                            </div>
+                            <div class="row pl-10 pr-10">
+                                <div class="col-xs-3 text-left border noborder">
+                                    <div class="pl-10"><b>Maç<br />Sonucu</b></div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>1</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>X</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>2</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="carousel-caption pb-10">
+                            <div class="row pb-10">
+                                <div class="col-xs-1 col-xs-offset-1"><i class="fas fa-futbol font-32 pt-10"></i></div>
+                                <div class="col-xs-2">
+                                    <div class="font-22">52'</div>
+                                    <div><span class="label label-danger">LIVE</span></div>
+                                </div>
+                                <div class="col-xs-6 text-left pt-5 font-16">
+                                    <div><b>Alverca</b></div>
+                                    <div><b>Dezembro</b></div>
+                                </div>
+                            </div>
+                            <div class="row pl-10 pr-10">
+                                <div class="col-xs-3 text-left border noborder">
+                                    <div class="pl-10"><b>Maç<br />Sonucu</b></div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>1</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>X</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 border">
+                                    <div>
+                                        <div class="col-xs-4 font-13"><b>2</b></div>
+                                        <div class="col-xs-8 font-13">5,43</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row bahisler">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-16"><i class="fas fa-desktop"></i> <b>BAHİS</b></div>
+                        <div class="panel-body p-0">
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="far fa-futbol"></i> Spor Bahisleri </div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-play-circle"></i> Canlı Bahisler</div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-camera-retro"></i> Highlights</div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-star"></i> Favoriler</div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-clock"></i> Son Dakika</div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-trophy"></i> Sonuçlar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="assets/img/565x195_virtualsports_TR_reklam.jpg" class="img-responsive" />
+                </div>
+            </div>
+            <div class="row bahisler">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-16"><i class="fas fa-desktop"></i> <b>DİĞER ÖNERİLERİMİZ</b></div>
+                        <div class="panel-body p-0">
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="far fa-futbol"></i> Sanal Spor </div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-play-circle"></i> Casino</div>
+                            </div>
+                            <div class="col-xs-12 border">
+                                <div class="p-10 font-16"><i class="fas fa-camera-retro"></i> Canlı Casino</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row bahisler">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-16"><i class="fas fa-desktop"></i> <b>HESABIM</b></div>
+                        <div class="panel-body p-0">
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="far fa-futbol"></i> Para Yatırma </div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-play-circle"></i> Hesabım</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row bahisler">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-16"><i class="fas fa-desktop"></i> <b>BİLGİ</b></div>
+                        <div class="panel-body p-0">
+                            <div class="col-xs-6 border">
+                                <div class="p-10 sartname font-16">
+                                    <div class="cell"><i class="far fa-futbol"></i></div>
+                                    <div class="cell">Genel Şirket Şartnamesi</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-play-circle"></i> Destek</div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="far fa-futbol"></i> İletişim </div>
+                            </div>
+                            <div class="col-xs-6 border">
+                                <div class="p-10 font-16"><i class="fas fa-play-circle"></i> Diğer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row bg-white pt-10">
+                <div class="col-md-12">
+                    <p class="font-16 text-center">(Son Giriş: 28.07.2019 13:34)</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <a href="#" class="active">
+                    <i class="fas fa-home"></i> ANASAYFA
+                </a>
+                <a href="#">
+                    <i class="far fa-play-circle"></i> CANLI
+                </a>
+                <a href="#">
+                    <i class="fas fa-suitcase"></i> BAHİSLERİM
+                </a>
+                <a href="#">
+                    <i class="fas fa-user"></i> HESABIM
+                </a>
+                <a href="#">
+                    <i class="fas fa-download"></i> BAHİS KUPONU
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="bg-white orange mb-5 hidden-sm hidden-xs">
+            <!-- Nav tabs -->
+            <h4 class="title color-orange mb-5 pl-10 pull-left"><i class="far fa-clock"></i> Canlı</h4>
+            <ul class="nav nav-tabs" role="tablist">
+                <li  role="presentation" [ngClass]="{'active':liveSportIdSelected===1}">
+                  <a (click)="liveSportIdSelected=1" [routerLink]="[{outlets:{sport:[1]}}]" routerLinkActive="router-link-active" aria-controls="futbol" role="tab" >Futbol</a>
+                </li>
+                <!-- <li role="presentation"><a href="#hentbol" aria-controls="hentbol" role="tab" data-toggle="tab">Hentbol</a></li> -->
+                <li   role="presentation" [ngClass]="{'active':liveSportIdSelected===13}">
+                  <a (click)="liveSportIdSelected=13" [routerLink]="[{outlets:{sport:[13]}}]" routerLinkActive="router-link-active" aria-controls="tenis" role="tab">Tenis</a>
+                </li>
+                <li role="presentation" [ngClass]="{'active':liveSportIdSelected===18}">
+                  <a (click)="liveSportIdSelected=18"[routerLink]="[{outlets:{sport:[18]}}]" routerLinkActive="router-link-active" aria-controls="basketbal" role="tab">Basketball</a>
+                </li>
+                <li role="presentation" [ngClass]="{'active':liveSportIdSelected===91}">
+                  <a (click)="liveSportIdSelected=91"[routerLink]="[{outlets:{sport:[91]}}]" routerLinkActive="router-link-active" aria-controls="volleybal" role="tab">Volleyball</a>
+                </li>
+
+            </ul>
+            <div class="clearfix"></div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active">
+                  <router-outlet name="sport"></router-outlet>
+                </div>
+                <!-- <div role="tabpanel" class="tab-pane" [attr.id]="'tenis'">..2.</div>
+                <div role="tabpanel" class="tab-pane" id="hentbol">..3.</div> -->
+            </div>
+        </div>
+
+        <div class="bg-white grey mt-15 mb-5 hidden-sm hidden-xs">
+
+            <!-- Nav tabs -->
+            <h4 class="title color-grey mb-5 pl-10 pull-left">Highlights</h4>
+            <ul class="nav nav-tabs" role="tablist">
+                <li (click)="upcomingSportIdSelected=18" role="presentation"><a href="#basketbal" aria-controls="basketbal" role="tab" data-toggle="tab">Basketbal</a></li>
+                <li (click)="upcomingSportIdSelected=13" role="presentation"><a href="#tenis1" aria-controls="tenis1" role="tab" data-toggle="tab">Tenis</a></li>
+                <li (click)="upcomingSportIdSelected=1" role="presentation" class="active"><a href="#futbol1" aria-controls="futbol1" role="tab" data-toggle="tab">Futbol</a></li>
+
+                <li class="check" (click)="upcomingSportIdSelected=-1"><a href="javascript:;">Bugün</a></li>
+                <li class="check" (click)="upcomingSportIdSelected=-2"><a href="javascript:;">Tümü</a></li>
+            </ul>
+            <div class="clearfix"></div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="futbol1">
+                  <totobo-prematchlist [sportId]="upcomingSportIdSelected"></totobo-prematchlist>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-white grey mt-15 mb-5 hidden-sm hidden-xs">
+
+            <!-- Nav tabs -->
+            <h4 class="title color-grey mb-5 pl-10 pull-left">Futbol - Az Sonra</h4>
+            <ul class="nav nav-tabs" role="tablist"></ul>
+            <div class="clearfix"></div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home1">
+                  <totobo-prematchlist [sportId]="1" countryCode='tr' [hours]="1"></totobo-prematchlist>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-md-3 sagmenu hidden-sm hidden-xs">
+        <div class="panel panel-default mb-10">
+            <div class="panel-heading text-center">Diğer önerilerimiz</div>
+            <div class="list-group">
+                <a href="#" class="list-group-item icon-casino pl-40 font-12">Casino</a>
+                <a href="#" class="list-group-item icon-canli-casino pl-40 font-12">Canlı Casino</a>
+                <a href="#" class="list-group-item icon-sanal-spor pl-40 font-12">Sanal Spor</a>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">Destek</div>
+            <div class="list-group">
+                <a href="#" class="list-group-item font-12"><i class="fas fa-angle-right"></i> Yardım (S.S.S.)</a>
+                <a href="#" class="list-group-item font-12"><i class="fas fa-angle-right"></i> Bahis Sözlüğü</a>
+                <a href="#" class="list-group-item font-12"><i class="fas fa-angle-right"></i> Müşteri hizmetleri</a>
+                <div class="list-group-item font-12 pl-5 pr-5"><a class="btn btn-dark btn-block btn-sm">Şimdi canlı destek!</a></div>
+            </div>
+        </div>
+
+        <div class="panel panel-default hidden-sm hidden-xs">
+            <div class="panel-heading text-center">Canlı Casino</div>
+            <!-- <iframe class="casino-reklam" src="video.seenthis.se/v2/live/casino-a/blaze_stream_c.html" scrolling="no" frameborder="0" width="214" height="214"></iframe> -->
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">Haftanın Talihlileri</div>
+            <div class="list-group">
+                <a href="#" class="list-group-item font-12"><i class="fas fa-user font-16 mr-5 color-orange"></i> Ro...n <span class="pull-right font-13 pt-2">45.000,00 TL</span></a>
+                <a href="#" class="list-group-item font-12"><i class="fas fa-user font-16 mr-5"></i> Gi...w <span class="pull-right font-13 pt-2">30.756,25 TL</span></a>
+                <a href="#" class="list-group-item font-12"><i class="fas fa-user font-16 mr-5"></i> Ga...n <span class="pull-right font-13 pt-2">31.138,91 TL</span></a>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading text-center">Mobil</div>
+            <img src="assets/img/boxMobileTeaser.png" class="img-responsive" />
+            <div class="pl-10 pr-10 pt-10 mb-10">
+                <div>Eksiksiz bir bahis programı avuçlarının içinde!</div>
+                <a href="#" class="color-dark">Mobil hakkında daha fazla</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-2 bahiskutusu text-center font-10 hidden-md hidden-sm hidden-xs">
+        <div data-spy="affix" data-offset-top="92" style="width:204px;">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">Bahis Kuponu</div>
+                <div class="row pl-5 pr-5">
+                    <div class="col-md-12 mt-10 mb-10">
+                        <div id="bahisSistem" class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group btn-group-xs" role="group">
+                                <button type="button" class="btn btn-default active">Tekli</button>
+                            </div>
+                            <div class="btn-group btn-group-xs" role="group">
+                                <button type="button" class="btn btn-default">Kombine</button>
+                            </div>
+                            <div class="btn-group btn-group-xs" role="group">
+                                <button type="button" class="btn btn-default">Sistem</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <p>Henüz bir bahis seçilmedi. Bahisleri seçmek için ilgili oran üstüne tıklayınız.</p>
+                        <p class="btn btn-default btn-xs font-10 mb-10" onclick="eniyibahisler();">En iyi bahislerimizin arasından seçin! <span class="caret"></span></p>
+                    </div>
+                </div>
+
+
+                <div class="eniyibahisler pl-5 pr-5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  <!--<div class="d-flex flex-row">
+    <div class=" flex-fill  solpanel" *ngIf="!(layout$|async)?.isMobile">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center mb-5">
+          Spor Bahisleri
+          <totobo-range-slider></totobo-range-slider>
+        </div>
+        <div class="solmenu">
+          <div class="list-group mb-0">
+
+            <a data-href="#menu1" class="list-group-item">
+              <i class="fas fa-futbol hidden-md hidden-lg"></i>
+              <span class="hidden-xs hidden-sm">
+                  Futbol1
+                  <span class="label label-default">14</span>
+                  <span class="icons pull-right">
+                      <i class="fas fa-check tumunuSec"></i>
+                      <i class="fas fa-times tumunuKaldir"></i>
+                  </span>
+              </span>
+            </a>
+            <div id="menu1">
+              <ul class="list-group mb-0">
+                  <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                  <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                  <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                  <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+                  <li class="list-group-item bg-white color-dark"><label><input type="checkbox" checked="checked"> Bootply <span class="label label-default">14</span></label></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1>something</h1>
+    </div>
+  </div>-->
+</div>

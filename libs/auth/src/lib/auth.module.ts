@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import {SharedModule} from '@totobo/shared';
+import {SharedModule} from '@totobosports-new/shared';
 import { LoginComponent } from './login/login.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';

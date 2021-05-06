@@ -13,21 +13,21 @@ export class AuthEffects {
 //  init$ = createEffect(() => this.dataPersistence.fetch(AuthActions.login, {
 //     run:  (action: ReturnType<typeof AuthActions.login>, state: AuthFeature.AuthPartialState) => {
 //       // Your custom service 'load' logic goes here. For now just return a success action...
-//       return AuthActions.loginSuccess( { 
+//       return AuthActions.loginSuccess( {
 //         auth:{id:1
 //         ,first_name:'abc'
 //         ,last_name:'def'
 //         ,token:'sdsd'
 //         ,email:'ss@op.com'}
 //       });
-//       // of(true).pipe(map(_=>AuthActions.loginSuccess( { 
+//       // of(true).pipe(map(_=>AuthActions.loginSuccess( {
 //       //   auth:{id:1
 //       //   ,first_name:'abc'
 //       //   ,last_name:'def'
 //       //   ,token:'sdsd'
 //       //   ,email:'ss@op.com'}
 //       // })))
-      
+
 //     },
 
 //     onError: (action: ReturnType<typeof AuthActions.login>, error) => {
@@ -46,20 +46,20 @@ this.actions$.pipe(
       map((user) => AuthActions.loginSuccess(user as AuthEntity)),
       catchError((error) => of(AuthActions.loginFailure({ error })))
     )
-  
+
   )
 )
 );
 
   logout$=createEffect(()=>this.actions$.pipe(
     ofType(AuthActions.logout)
-    ,map(_=>{console.log('sdsd') ;return AuthActions.logoutSuccess({loggedOut:true})})
+    ,map(_=>{return AuthActions.logoutSuccess({loggedOut:true})})
     ))
 
 
  constructor(
    private actions$: Actions,
-   private dataPersistence: DataPersistence<AuthFeature.AuthPartialState>, 
+   private dataPersistence: DataPersistence<AuthFeature.AuthPartialState>,
    private authService:AuthService
   ) { }
 }

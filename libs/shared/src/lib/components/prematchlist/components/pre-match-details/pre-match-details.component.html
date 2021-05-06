@@ -1,0 +1,70 @@
+<div  class="style_row__3dZ0G row-content">
+    <div class="style_metadata__3g6gc">
+        <a class="" [routerLink]="['/live/'+match?.id]">
+            <div class="flex-column style_gameInfo__2B3Dp">
+                <div class="style_matchupMetadata__pDqW6">
+                    <div class="ellipsis style_gameInfoLabel__22bJY">
+                        <span class="ellipsis event-row-participant style_participant__3D7nB">
+                            {{match?.home?.name}}
+                        </span>
+                      </div>
+                      <div class="ellipsis style_gameInfoLabel__22bJY">
+                        <span class="ellipsis event-row-participant style_participant__3D7nB">
+                            {{match?.away?.name}}
+                        </span>
+                      </div>
+                      <div class="style_matchupDate__pcXyq">
+                        <span class="style_live__CAScc">
+                            <span>
+                                {{
+                                    this.timeDetails>50 ? (this.localMatchDate | date:'E HH:mm'):
+                                     (this.localMatchDate | date:'E') + ' '+this.timeDetails +' min'
+                                }}
+                            </span>
+                        </span>
+                      </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="flex-grow: 1"></div>
+
+    <ng-template [ngIf]="(eventOdds$ | async)">
+      <div *ngIf="(eventOdds$ | async);let odds" class="style_buttons style_moneyline__1ptj- style_threeButtons__2t1WL">
+      <button class="flex-row style_default__3m1iy">
+          <span class="style_price__1WvlZ">{{odds[sportObject][0]?.home_od}}</span>
+      </button>
+      <button  class="flex-row style_default__3m1iy">
+          <span *ngIf="odds[sportObject][0]?.draw_od" class="style_price__1WvlZ">{{ (odds[sportObject][0]?.draw_od)}}</span>
+      </button>
+      <button class="flex-row style_default__3m1iy">
+        <span class="style_price__1WvlZ">
+          {{odds[sportObject][0]?.away_od}}
+        </span>
+
+      </button>
+      </div>
+      <div class="style_buttons">
+          <button class="flex-column style_default__3m1iy">
+              <span class="style_points__2bP5X">-0.75</span
+              ><span class="style_price__1WvlZ">1.917</span>
+          </button>
+          <button class="flex-column style_default__3m1iy">
+              <span class="style_points__2bP5X">+0.75</span
+              ><span class="style_price__1WvlZ">1.900</span>
+          </button>
+      <div class="style_alternates__1-raF">
+          <a class="style_expandBtn__3TBhA"
+          ><i class="icon-expand style_expandBtnIcon__3H5BT"></i
+          ></a>
+      </div>
+      </div>
+      <div *ngIf="(eventOdds$ | async);let odds2" class="style_rowEnd__2h_xB">
+          <a
+          class="style_btn__f2hEe"
+          href="/live/1/algeria-youth-u21-league/1266181860"
+          >{{"+"+odds2[sportObject].length}}<i class="icon-chevron-right-sml"></i
+          ></a>
+      </div>
+  </ng-template>
+</div>

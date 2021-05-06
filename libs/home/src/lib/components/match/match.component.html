@@ -1,0 +1,44 @@
+<div class="table-responsive">
+  <table class="table table-striped text-center mb-0">
+      <thead>
+          <tr>
+              <th>Saat</th>
+              <th class="text-center" colspan="3">&nbsp;</th>
+              <th class="text-center">1</th>
+              <th class="text-center">X</th>
+              <th class="text-center">2</th>
+              <th [attr.colspan]="_sportId==13?2:3">{{sportBetHeader()}}</th>
+              <th *ngIf="_sportId==13" class="text-right">set score</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let match of matchesWithOdds$|async; let i=index;">
+            <td class="short"  scope="row" [ngClass]="{select:match?.time_status=='1'}">{{matchStatus(match)}}</td>
+            <td triggers="mouseenter mouseleave" placement="bottom" [tooltipHtml]="match.league?.name" class=" text-left short">{{match?.home?.name}}</td>
+            <td><b triggers="mouseenter mouseleave" placement="bottom" [tooltipHtml]="match.league?.name">{{matchScore(match)}}</b></td>
+            <td class="text-left short" triggers="mouseenter mouseleave" placement="bottom" [tooltipHtml]="match.league?.name">{{match?.away?.name}}</td>
+            <ng-template [ngIf]="match?.time_status=='1' && match.odds && _sportId">
+              <ng-template [ngIf]="match.odds[_sportId+'_1']">
+              <td class="pl-0 pr-0 w-40"><a class="label label-default">{{roundValue(match.odds[_sportId+'_1'][0]?.home_od)}}</a></td>
+              <td class="pl-0 pr-0 w-40"><a *ngIf="match.odds[_sportId+'_1'][0]?.draw_od" class="label label-default">{{roundValue(match.odds[_sportId+'_1'][0]?.draw_od)}}</a></td>
+              <td class="pl-0 pr-0 w-40"><a class="label label-default">{{roundValue(match.odds[_sportId+'_1'][0]?.away_od)}}</a></td>
+            </ng-template>
+              <ng-template [ngIf]="match.odds[_sportId+'_3']">
+                <td class="pl-0 pr-0 w-40">{{roundValue(match.odds[_sportId+'_3'][0]?.handicap)}}</td>
+                <td class="pl-0 pr-0 w-40"><a class="label label-default lbl-down">{{roundValue(match.odds[_sportId+'_3'][0]?.over_od)}}</a></td>
+                <td class="pl-0 pr-0 w-30"><a class="label label-default lbl-up">{{roundValue(match.odds[_sportId+'_3'][0]?.under_od)}}</a></td>
+              </ng-template>
+
+            </ng-template>
+            <ng-template [ngIf]="_sportId==13">
+              <td [attr.colspan]="!match.odds[_sportId+'_3']?3:1" class="text-right"><b>{{tennisSetScore(match)}}</b></td>
+            </ng-template>
+          </tr>
+      </tbody>
+  </table>
+  <div class="hr-orange">
+      <div class="col-md-12 text-right mt-5 mb-5">
+          <a href="#" class="color-dark font-12">Bütün Karşılamalar & Bahisler <i class="fas fa-angle-double-right"></i></a>
+      </div>
+  </div>
+</div>

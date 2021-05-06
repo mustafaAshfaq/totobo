@@ -1,0 +1,86 @@
+<!--<div  class="style_row__3dZ0G row-content">
+    <div class="style_metadata__3g6gc">
+        <a class="" [routerLink]="['/match/'+match?.sport_id+'/live/'+match?.id]">
+      <div class="flex-column style_gameInfo__2B3Dp">
+        <div class="style_matchupMetadata__pDqW6">
+          <div class="ellipsis style_gameInfoLabel__22bJY">
+            <span
+              class="ellipsis event-row-participant style_participant__3D7nB"
+              >{{match?.home?.name}}</span
+            ><span class="style_staticScore__1wWcf style_score__58p_z"
+              >{{matchScore(true)}}</span
+            >
+          </div>
+          <div class="ellipsis style_gameInfoLabel__22bJY">
+            <span
+              class="ellipsis event-row-participant style_participant__3D7nB"
+              >{{match?.away?.name}}</span
+            ><span class="style_staticScore__1wWcf style_score__58p_z"
+              >{{matchScore(false)}}</span
+            >
+          </div>
+          <div class="style_matchupDate__pcXyq">
+            <span class="style_live__CAScc"
+              ><span>{{matchStatus}}</span></span
+            >
+          </div>
+        </div>
+      </div>
+        </a>
+    </div>
+    <div style="flex-grow: 1"></div>
+    <ng-template [ngIf]="match?.time_status=='1' && (odds$|async) && sportOdds">
+        <div class="style_buttons style_moneyline__1ptj- style_threeButtons__2t1WL">
+        <button class="flex-row style_default__3m1iy">
+            <span class="style_price__1WvlZ">{{sportOdds[0]?.home_od}}</span>
+        </button>
+        <button  class="flex-row style_default__3m1iy">
+            <span *ngIf="sportOdds[0]?.draw_od" class="style_price__1WvlZ">{{ (sportOdds[0]?.draw_od)}}</span>
+        </button>
+        <button class="flex-row style_default__3m1iy">
+
+              <span class="style_price__1WvlZ">{{sportOdds[0]?.away_od}}</span>
+
+        </button>
+        </div>
+        <div class="style_buttons">
+            <button class="flex-column style_default__3m1iy">
+                <span class="style_points__2bP5X">-0.75</span
+                ><span class="style_price__1WvlZ">1.917</span>
+            </button>
+            <button class="flex-column style_default__3m1iy">
+                <span class="style_points__2bP5X">+0.75</span
+                ><span class="style_price__1WvlZ">1.900</span>
+            </button>
+        <div class="style_alternates__1-raF">
+            <a class="style_expandBtn__3TBhA"
+            ><i class="icon-expand style_expandBtnIcon__3H5BT"></i
+            ></a>
+        </div>
+        </div>
+        <div class="style_rowEnd__2h_xB">
+            <a
+            class="style_btn__f2hEe"
+            [routerLink]="['/match/'+match?.sport_id+'/live/'+match?.id]"
+            >{{"+"+sportOdds.length}}<i class="icon-chevron-right-sml"></i
+            ></a>
+        </div>
+    </ng-template>
+</div> -->
+<table>
+  <tr>
+    <td class="w-40 select" scope="row">{{matchStatus}}</td>
+    <td class="text-right">{{match?.home?.name}}</td>
+    <td><b>{{matchScore(true)+":"+matchScore(false)}}</b></td>
+    <td class="text-left">{{match?.away?.name}}</td>
+    <ng-template [ngIf]="match?.time_status=='1' && (odds$|async) && sportOdds">
+      <td class="pl-0 pr-0 w-40"><a class="label label-default">{{sportOdds[0]?.home_od}}</a></td>
+      <td class="pl-0 pr-0 w-40"><a class="label label-default">{{ (sportOdds[0]?.draw_od)}}</a></td>
+      <td class="pl-0 pr-0 w-40"><a class="label label-default">{{sportOdds[0]?.away_od}}</a></td>
+      <td class="pl-0 pr-0 w-40">0.5</td>
+      <td class="pl-0 pr-0 w-40"><a class="label label-default lbl-down">2.80</a></td>
+      <td class="pl-0 pr-0 w-40"><a class="label label-default lbl-up">1.35</a></td>
+    </ng-template>
+  </tr>
+</table>
+

@@ -2,7 +2,7 @@ import {Injectable,PLATFORM_ID,Inject} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
 import {HttpEvent, HttpInterceptor,HttpHandler, HttpRequest, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Config} from '@totobo/config';
+import {environment} from '../../../../apps/web/src/environments/environment';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor{
     constructor(@Inject(PLATFORM_ID) private platformId:Object){}
@@ -24,7 +24,7 @@ export class TokenInterceptor implements HttpInterceptor{
         if (url.indexOf('http://') >= 0 || url.indexOf('https://') >= 0) {
           return url;
         } else {
-          return Config.DEFAULT_CONFIG.apiEndpoint + url;
+          return environment.apiEndpoint + url;
         }
       }
     private getUserToken()

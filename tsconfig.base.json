@@ -15,15 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@totobo/shared": ["libs/shared/src/index.ts"],
-      "@totobo/config": ["libs/config/src/index.ts"],
-      "@totobo/test": ["libs/test/src/index.ts"],
-      "@totobo/layout": ["libs/layout/src/index.ts"],
-      "@totobo/core": ["libs/core/src/index.ts"],
-      "@totobo/auth": ["libs/auth/src/index.ts"],
-      "@totobo/home": ["libs/home/src/index.ts"],
-      "@totobo/product": ["libs/product/src/index.ts"],
-      "@totobo/bets": ["libs/bets/src/index.ts"]
+      "@totobosports-new/shared": ["libs/shared/src/index.ts"],
+      "@totobosports-new/home": ["libs/home/src/index.ts"],
+      "@totobosports-new/auth": ["libs/auth/src/index.ts"],
+      "@totobosports-new/layout": ["libs/layout/src/index.ts"],
+      "@totobosports-new/core": ["libs/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

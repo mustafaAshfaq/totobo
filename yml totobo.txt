@@ -1,0 +1,71 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - prototype
+variables:
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: 'Pay-As-You-Go'
+
+  # Web app name
+  webAppName: 'totobo'
+
+  # Environment name
+  environmentName: 'totobo'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+stages:
+- stage: Build
+  displayName: 'Build'
+  jobs:
+  - job: initial_setup
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - template: .azure-pipelines/steps/install-node-modules.yml
+    - script: echo 'installing dependencies'
+  - job: builds
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - template: .azure-pipelines/steps/install-node-modules.yml
+      - script:   yarn nx run-many --target=build --all --prod
+      - task: ArchiveFiles@2
+        displayName: 'archive ui'
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/bahis-ui'
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/ui/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+        enabled: true
+      - task: ArchiveFiles@2
+        displayName: 'archive api'
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/apps/totobo-api'
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/api/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+        enabled: true
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
+          ArtifactName: 'build'
+          publishLocation: FilePath
+          TargetPath: '$(Build.ArtifactStagingDirectory)'
+      
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          TargetPath: '$(Pipeline.Workspace)/a/ui/$(Build.BuildId).zip'
+          ArtifactName: 'ui'
+          publishLocation: 'container'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          TargetPath: '$(Pipeline.Workspace)/a/api/$(Build.BuildId).zip'
+          ArtifactName: 'api'
+          publishLocation: 'container'

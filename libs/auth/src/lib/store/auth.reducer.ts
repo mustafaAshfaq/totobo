@@ -3,6 +3,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as AuthActions from './auth.actions';
 import { AuthEntity } from './auth.models';
+import { state } from '@angular/animations';
 
 export const AUTH_FEATURE_KEY = 'auth';
 
@@ -30,12 +31,13 @@ const authReducer = createReducer(
   //on(AuthActions.logout, (state) => ({ ...state, authenticated: false, error: null })),
   on(AuthActions.logoutSuccess, (state,{loggedOut}) => (
     { ...state, authenticated: !loggedOut, error: null })),
-  on(AuthActions.loginSuccess, (state, auth) =>authAdapter
-    .setOne(auth, { ...state, authenticated: true })
+  on(AuthActions.loginSuccess, (state, auth) =>
+    //authAdapter.setOne(auth, { ...state, authenticated: true })
+   ( {...state,authenticated:true})
   ),
   on(AuthActions.loginFailure, (state, { error }) =>  ({ ...state, error:error}))
 );
 
-export function reducer(state: State | undefined, action: Action) {
+export function reducer(state: State | undefined=initialState, action: Action) {
   return authReducer(state, action);
 }

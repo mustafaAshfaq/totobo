@@ -1,15 +1,11 @@
 module.exports = {
   projects: [
-    '<rootDir>/apps/bahis-ui',
+    '<rootDir>/apps/web',
+    '<rootDir>/apps/api',
     '<rootDir>/libs/shared',
-    '<rootDir>/libs/config',
-    '<rootDir>/libs/test',
-    '<rootDir>/libs/layout',
-    '<rootDir>/apps/totobo-api',
-    '<rootDir>/libs/core',
-    '<rootDir>/libs/auth',
     '<rootDir>/libs/home',
-    '<rootDir>/libs/product',
-    '<rootDir>/libs/bets',
+    '<rootDir>/libs/auth',
+    '<rootDir>/libs/layout',
+    '<rootDir>/libs/core',
   ],
 };
