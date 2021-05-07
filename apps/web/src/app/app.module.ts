@@ -30,7 +30,7 @@ import {HttpClientModule} from '@angular/common/http'
             import('@totobosports-new/home').then(
               (module) => module.HomeModule
             ),
-            //canLoad:[AuthGuard]
+            canLoad:[AuthGuard]
         },
         {
           path: 'auth',

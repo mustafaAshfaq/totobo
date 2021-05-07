@@ -2,7 +2,7 @@ import {DEFAULT_APP_DATA,DEFAULT_META_DATA} from './default.config'
 export const Config={
     DEFAULT_CONFIG:{
       apiEndpoint:'/api', //'https://m.showbahis103.com/apiv3',
-      prodApiEndpoint: 'https://totoboapi.azurewebsites.net/api',
+      prodApiEndpoint: 'https://totobo-api.azurewebsites.net/api',
       frontEndUrl: 'https://totobo1.com/',
       appName: 'Totobo Online Shop',
       fevicon: '/assets/img/icons/favicon.ico',
